@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Tanks Strikes | Eltin182</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/teclado.js"></script>
+  <script src="js/animacao.js"></script>
+  <script src="js/tanque.js"></script>
+  <script src="js/inimigo.js"></script>
+  <script src="js/spritesheet.js"></script>
+  <script src="js/tiro.js"></script>
+  <script src="js/painel.js"></script>
+
+</head>
+<body>
+
+  <div class="container">
+    <h1><center>Tanks Strikes | Eltin182</center></h1>
+    <canvas width="650" height="450" id="cenario"></canvas>
+    <hr>
+    <h5>
+      <center>
+        Github:
+        <a href="https://github.com/eltonsantos" target="blank">Elton Santos</a> | Linkedin:
+        <a href="https://linkedin.com/in/eltonmelosantos" target="blank">Elton Santos</a> | Twitter:
+        <a href="https://twitter.com/eltin182" target="blank">@eltin182</a>
+      </center>
+    </h5>
+  </div>
+  
+  <script>
+
+    // AQUI FICARAO AS FUNÇOES PRINCIPAIS DO JOGO 
+    var canvas = document.getElementById('cenario');
+    var context = canvas.getContext('2d');
+
+    var teclado = new Teclado(document);
+    var animacao = new Animacao(context);
+    
+    var imgNave = new Image();
+    imgNave.src = "img/player.png";
+
+    var tanque = new Tanque(context, teclado, animacao, imgNave);
+
+    animacao.novoSprite(tanque);
+
+
+
+    teclado.disparou(ESPACO, function () {
+      tanque.atirar();
+    });
+
+    animacao.ligar();
+
+  </script>
+
+</body>
+</html>
